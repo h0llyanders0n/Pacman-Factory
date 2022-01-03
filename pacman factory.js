@@ -4,7 +4,7 @@ const pacArray = [
   ['./images/PacMan3.png', './images/PacMan4.png'],
 ];
 let direction = 0;
-const pacMen = []; 
+const pacMen = []; // This array holds all the pacmen
 
 // This function returns an object with random values
 function setToRandom(scale) {
@@ -27,11 +27,13 @@ function makePac() {
   newimg.src = './images/PacMan1.png';
   newimg.width = 100;
 
+  // TODO: set position here
   newimg.style.left = position.x;
   newimg.style.top = position.y;
+  // TODO add new Child image to game
   game.appendChild(newimg);
 
-  // Return details in an object
+  // return details in an object
   return {
     position,
     velocity,
@@ -40,7 +42,7 @@ function makePac() {
 }
 
 function update() {
-  // Loop over pacmen array and move each one and move image in DOM
+  // loop over pacmen array and move each one and move image in DOM
   pacMen.forEach((item) => {
     checkCollisions(item);
     item.position.x += item.velocity.x;
@@ -53,7 +55,7 @@ function update() {
 }
 
 function checkCollisions(item) {
-  // Detect collision with all walls and make pacman bounce
+  // TODO: detect collision with all walls and make pacman bounce
 if (
     item.position.x + item.velocity.x + item.newimg.width > window.innerWidth ||
     item.position.x + item.velocity.x < 0
@@ -67,10 +69,12 @@ if (
     item.velocity.y = -item.velocity.y;
 }
 
+
 function makeOne() {
-  pacMen.push(makePac()); 
+  pacMen.push(makePac()); // add a new PacMan
 }
 
+//don't change this line
 if (typeof module !== 'undefined') {
   module.exports = { checkCollisions, update, pacMen };
 }
